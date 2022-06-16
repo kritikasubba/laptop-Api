@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:laptop_api/model/laptop.dart';
+import 'package:laptop_api/views/views.dart';
 
 class AuthProvider extends ChangeNotifier{
   Laptop? _laptopModel;
@@ -14,7 +15,10 @@ class AuthProvider extends ChangeNotifier{
     _laptopModel = lModel;
   }
 
- 
+ getPost() async {
+  _laptopModel = await fetchData();
+  notifyListeners();
+ }
 
   
 }
