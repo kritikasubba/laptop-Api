@@ -30,12 +30,22 @@ body: Consumer<AuthProvider> (builder: (context, value, child) {
   return ListView.builder(
     itemCount: laptopModel.length,
     itemBuilder: (context, index) {
-    return Column(
-      children: [
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
 Image.network(laptopModel[index].thumbnail ?? ""),
 Text(laptopModel[index].price.toString()),
+Text(laptopModel[index].brand ?? ""),
+Text(laptopModel[index].description ?? ""),
+Text(laptopModel[index].category ?? ""),
+Text(laptopModel[index].discountPercentage.toString()),
+Text(laptopModel[index].title ?? ""),
+Text(laptopModel[index].rating.toString())
 
-      ],
+        ],
+      ),
     );
     
   });
