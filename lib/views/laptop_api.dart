@@ -13,47 +13,100 @@ class LaptopApi extends StatefulWidget {
 }
 
 class _LaptopApiState extends State<LaptopApi> {
+
+  List<String> apiDetails = [
+
+    
+  ];
   @override
   void initState() {
-   Future.microtask(() {
-    Provider.of<AuthProvider>(context, listen: false).getPost();
-   });
+    Future.microtask(() {
+      Provider.of<AuthProvider>(context, listen: false).getPost();
+    });
     super.initState();
   }
+
   Widget build(BuildContext context) {
-
     return Scaffold(
-appBar: AppBar(
-  title: Text('Laptop Api'),
-),
-body: Consumer<AuthProvider> (builder: (context, value, child) {
-  return ListView.builder(
-    itemCount: laptopModel.length,
-    itemBuilder: (context, index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-Image.network(laptopModel[index].thumbnail ?? ""),
-Text(laptopModel[index].price.toString()),
-Text(laptopModel[index].brand ?? ""),
-Text(laptopModel[index].description ?? ""),
-Text(laptopModel[index].category ?? ""),
-Text(laptopModel[index].discountPercentage.toString()),
-Text(laptopModel[index].title ?? ""),
-Text(laptopModel[index].rating.toString())
-
-        ],
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Laptop Api'),
+      ),
+      body: Consumer<AuthProvider>(
+        builder: (context, value, child) {
+          return ListView.builder(
+              itemCount: laptopModel.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(border: Border.all(
+                          color: Colors.red.shade100,
+                          
+                          width: 2
+                        ),
+                        
+                         borderRadius: const BorderRadius.all(Radius.circular(32)),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(32)),
+                          child: Image.network(laptopModel[index].thumbnail ?? "",
+                             
+                              fit: BoxFit.fill, ),
+                        ),
+                      ),
+                          const SizedBox(
+                        height: 5,
+                      ),
+                     Text(
+                        "Price: ${laptopModel[index].price.toString()}",
+                        style: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Brand: ${laptopModel[index].brand ?? ""}",
+                        style: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Decription: ${laptopModel[index].description ?? ""}",
+                        style: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "Category: ${laptopModel[index].category ?? ""}",
+                        style: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Discount Percentage: ${laptopModel[index].discountPercentage.toString()}",
+                        style: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Title: ${laptopModel[index].title ?? ""}",
+                        style: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Rating: ${laptopModel[index].rating.toString()}",
+                        style: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                    
+                    ],
+                  ),
+                );
+              });
+        },
       ),
     );
-    
-  });
-},),
-
-    );
-    
-    
-    
   }
 }

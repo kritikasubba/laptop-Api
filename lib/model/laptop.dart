@@ -49,7 +49,7 @@ class Products {
     brand = json['brand'];
     category = json['category'];
     description = json['description'];
-    discountPercentage = json['discount_percentage'];
+    discountPercentage = json['discountPercentage'];
     id = json['id'];
     images = json['images'];
     rating = json['rating'];
