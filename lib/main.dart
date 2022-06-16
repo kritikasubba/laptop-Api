@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:laptop_api/provider/auth_provider.dart';
+import 'package:laptop_api/views/laptop_api.dart';
+import 'package:provider/provider.dart';
 
 
 void main() {
@@ -10,9 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      
+    return ChangeNotifierProvider(create: (_) => AuthProvider(),
+    child: const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LaptopApi(),
+    ),
     );
+    
+  
     
   }
 }
